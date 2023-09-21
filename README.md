@@ -6,4 +6,4 @@ Startup Instructions:
 3. Run `python3 /chat-app/chat-client.py` two or more times in separate terminals
 
 # Design Diagram:
-![alt text](https://https://github.com/4040tee/Distributed-Instant-Messager/blob/main/Design%20Diagram.png?raw=true)
+![alt text](https://github.com/4040tee/Distributed-Instant-Messager/blob/main/Design%20Diagram.png)
