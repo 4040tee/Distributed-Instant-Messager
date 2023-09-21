@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+message MessageStreamRequest {
+  string access_token = 1;
+}
+
+message MessageResponse {
+  string sender = 1;
+  string text = 2;
+  string date = 3;
+  uint64 receiver_id = 4;
+  optional string channel_name = 5;
+}
+
+message RegisterRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LogoutRequest {
+  string access_token = 1;
+}
+
+message ChannelPostRequest {
+  string channel_name = 1;
+  string message = 2;
+  string access_token = 3;
+}
+
+message DirectMessageRequest {
+  string recipient = 1;
+  string message = 2;
+  string access_token = 3;
+}
+
+message WatchRequest {
+  string channel_name = 1;
+  string access_token = 2;
+}
+
+message UnwatchRequest {
+  string channel_name = 1;
+  string access_token = 2;
+}
+
+message BlockRequest {
+  string blocked_user = 1;
+  string access_token = 2;
+}
+
+message UnblockRequest {
+  string blocked_user = 1;
+  string access_token = 2;
+}
+
+message Response {
+  string text = 1;
+  bool status = 2;
+}
+
+
+service ChatService{
+  rpc RegisterUser(RegisterRequest) returns (Response);
+  rpc Login(LoginRequest) returns (Response);
+  rpc Logout(LogoutRequest) returns (Response);
+  rpc ChannelPost(ChannelPostRequest) returns (Response);
+  rpc DirectMessage(DirectMessageRequest) returns (Response);
+  rpc Watch(WatchRequest) returns (Response);
+  rpc Unwatch(UnwatchRequest) returns (Response);
+  rpc Block(BlockRequest) returns (Response);
+  rpc Unblock(UnblockRequest) returns (Response);
+  rpc MessageStream(MessageStreamRequest) returns (stream MessageResponse);
+} 
